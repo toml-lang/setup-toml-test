@@ -1,0 +1,36 @@
+name:        'toml-test'
+description: 'Run toml-test'
+runs:
+  using:   'node20'
+  #main:    'index.js'
+  #post:    'post.js'
+  main:    'dist/index/index.js'
+  post:    'dist/post/index.js'
+  post-if: 'success()'
+
+inputs:
+  version:
+    description: 'Version of the toml-test; as tag name, "latest" for latest tagged version, or "main" for latest main'
+    required:    false
+    default:     'latest'
+  bin:
+    description: 'Location of toml-test binary; default is ./toml-test; on Windows .exe will be added automatically'
+    required:    false
+    default:     './toml-test'
+
+  mainBranch:
+    description: 'Name of your "main" branch to generate reports for; typically "main" or "master"'
+    required:    false
+    default:     'main'
+
+  decoder:
+    description: 'Path to your decoder'
+    required:    true
+  encoder:
+    description: "Path to your encoder; leave empty if writing TOML files isn't supported"
+    required:    false
+    default:     ''
+  flags:
+    description: 'Extra flags for toml-test; should rarely be needed'
+    required:    false
+    default:     ''
